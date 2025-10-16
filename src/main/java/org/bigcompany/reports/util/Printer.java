@@ -3,7 +3,8 @@ package org.bigcompany.reports.util;
 import java.lang.reflect.Field;
 import java.util.List;
 /**
- * Utility to print a plain old java object in a tabular fashion. Does not handle nested objects
+ * Utility to print a plain old java object in a tabular fashion. Does not handle nested objects.
+ * Uses introspection to get field dimensions and considers value lengths to derive the spacing
  */
 public class Printer {
 	/**

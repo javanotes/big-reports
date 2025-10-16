@@ -7,15 +7,29 @@ import java.util.stream.Collectors;
 import org.bigcompany.reports.dto.LineProfile;
 import org.bigcompany.reports.dto.SalaryProfile;
 
+/**
+ * Service class for reporting use cases.
+ */
 public class PersonService {
 
 	private PersonDao personDao;
-	
+
+	/**
+	 * constructor
+	 * @param personDaoFile employee data file
+	 */
 	public PersonService(String personDaoFile) {
 		personDao = new PersonDao(personDaoFile);
 		personDao.open();
 	}
-	
+
+	/**
+	 * Given a range of lower and upper bound of deviations based on average reportee salary, get underpaid and overpaid
+	 * managers from the employee data.
+	 * @param underpaidDeviation lower bound
+	 * @param overpaidDeviation upper bound
+	 * @return list of employee
+	 */
 	public List<SalaryProfile> getManagerSalaryProfile(double underpaidDeviation, double overpaidDeviation) {
 		Map<String, List<Map<String, String>>> mgrs = personDao.getIndexByMgr();
 		Map<String, Map<String, String>> emps = personDao.getIndexByEmp();
@@ -50,7 +64,12 @@ public class PersonService {
 		return profiles;
 		
 	}
-	
+
+	/**
+	 * Given a number, get all employees having greater or equal reporting line.
+	 * @param len reporting line length
+	 * @return list of employee
+	 */
 	public List<LineProfile> getHighReportingLines(int len) {
 		Map<String, Map<String, String>> emps = personDao.getIndexByEmp();
 		var lineProfiles = personDao.getIndexByEmp().keySet().stream().map(id -> {

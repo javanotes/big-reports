@@ -10,13 +10,13 @@ import org.bigcompany.reports.file.ITable;
 import org.bigcompany.reports.file.TableDao;
 import org.bigcompany.reports.file.FieldTyp.DataTyp;
 /**
- * This is a specific type of {@code Dao}, which is opinionated towards its underlying file structure.
- * We can have other structural implementations. Not thread safe
+ * This is a specific type of {@code TableDao}, which is opinionated towards its underlying file structure.
+ * This class will bring out use case specific data structures.
  */
 public class PersonDao extends TableDao{
 
 	public PersonDao(String filePath) {
-		super(ITable.ofDelimSeparated(filePath));
+		super(ITable.newInstance(filePath));
 		
 	}
 

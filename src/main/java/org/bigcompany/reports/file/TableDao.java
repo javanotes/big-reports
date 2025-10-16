@@ -7,7 +7,9 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * Protected generic data access pattern over a {@code CsvDB}.
+ * Abstract generic data access pattern over a {@code ITable}. This is a foundational
+ * data read operation layer, to be used for building dimensional data structures on
+ * the file data.
  */
 public abstract class TableDao {
 

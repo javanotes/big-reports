@@ -1,7 +1,7 @@
 package org.bigcompany.reports.file;
 
 /**
- * A basic metadata for field types. Can be enhanced with advanced controls
+ * A basic metadata for field types. Can be enhanced with advanced controls for governance and compliance, for example.
  */
 public class FieldTyp {
 	

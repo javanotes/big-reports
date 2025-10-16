@@ -14,9 +14,10 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
- * A simple wrapper over a delimiter separated file data, held in memory. This implementation mandatorily 
- * expects a header row.
- * Can be refreshed. Not thread safe!
+ * A data wrapper over a delimiter separated file data, held in memory. This implementation mandatorily
+ * expects a header row. The in memory data structure used will be List of Maps - where each record is represented as a key value entity. The headers being
+ * the key in the entries. Note, the structural integrity of the file with respect to the headers has to be maintained.
+ * The data can be refreshed. Not thread safe!
  */
 final class CsvTable implements ITable {
 	
