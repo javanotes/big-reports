@@ -80,6 +80,7 @@ final class CsvTable implements ITable {
 	 */
 	@Override
 	public boolean load(FieldTyp ...fieldTyps) {
+
 		try {
 			file = Path.of(Thread.currentThread().getContextClassLoader().getResource(filePath).toURI());
 		} catch (URISyntaxException e) {

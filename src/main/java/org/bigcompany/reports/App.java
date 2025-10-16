@@ -4,7 +4,7 @@ import org.bigcompany.reports.service.PersonService;
 import org.bigcompany.reports.util.Printer;
 
 /**
- * Hello world!
+ * Given an employee CSV file with headers, report use cases on employee dimensions.
  *
  */
 public class App 

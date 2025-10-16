@@ -21,7 +21,6 @@ class CsvTableTest {
     @BeforeEach
     void setUp() throws IOException {
         csvFile = "missing.txt";
-        //Files.write(csvFile, List.of(HEADER, ROW1, ROW2, "", ROW_INVALID));
     }
 
     @Test
