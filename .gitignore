@@ -1,0 +1,5 @@
+# .gitignore
+*.class
+/out/
+/target/
+/.idea/
