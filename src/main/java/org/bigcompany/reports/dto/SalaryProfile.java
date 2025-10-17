@@ -5,7 +5,9 @@ public class SalaryProfile {
 	private String id;
 	private String name;
 	private double salary;
+	private double reporteeAvg;
 	private double deviation;
+
 	private String range = null;
 	public String getManagerId() {
 		return id;
@@ -49,6 +51,12 @@ public class SalaryProfile {
 		this.range = range;
 	}
 
-	
 
+	public double getReporteeAvg() {
+		return reporteeAvg;
+	}
+
+	public void setReporteeAvg(double reporteeAvg) {
+		this.reporteeAvg = reporteeAvg;
+	}
 }

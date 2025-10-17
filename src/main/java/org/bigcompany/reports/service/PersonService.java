@@ -1,5 +1,7 @@
 package org.bigcompany.reports.service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -44,17 +46,16 @@ public class PersonService {
 			SalaryProfile profile = new SalaryProfile();
 			profile.setManagerId(id);
 			profile.setManagerName((String) personDao.get(empRec, PersonDao.FLD_FNAME).get()  +" "+ (String) personDao.get(empRec, PersonDao.FLD_LNAME).get());
-			profile.setSalary(sal);
+			profile.setSalary(halfUp(sal));
+			profile.setReporteeAvg(halfUp(avg));
 			profile.setDeviation((sal-avg)/avg);
-			
 			if(profile.getDeviation() >= overpaidDeviation) {
-				profile.setDeviation(sal-avg);
 				profile.setRange("OVERPAID");
 			}
 			else if(profile.getDeviation() < underpaidDeviation) {
-				profile.setDeviation(sal-avg);
 				profile.setRange("UNDERPAID");
 			}
+			profile.setDeviation(halfUp( sal-avg));
 			return profile;
 		})
 		.filter(p -> p.getRange() != null)		
@@ -65,6 +66,9 @@ public class PersonService {
 		
 	}
 
+	private static double halfUp(double d){
+		return BigDecimal.valueOf(d).setScale(2, RoundingMode.HALF_UP).doubleValue();
+	}
 	/**
 	 * Given a number, get all employees having greater or equal reporting line.
 	 * @param len reporting line length
