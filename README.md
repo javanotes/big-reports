@@ -10,8 +10,8 @@ necessary concurrency constructs as needed.
     ITable <|-- CsvTable
     TableDao --> ITable
     PersonDao --|> TableDao
-    PersonDao .. CsvTable
-    PersonDao -- FieldTyp
+    PersonDao ..> ITable
+    PersonDao --> FieldTyp
     PersonService --> PersonDao
     note for FieldTyp "field metadata config"
     note for ITable "tabular file data reader specs"
