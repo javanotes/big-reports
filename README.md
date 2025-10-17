@@ -2,7 +2,7 @@
 Internally the file content is loaded in memory as a collection of key value entries, with keys being the headers. This is the fundamental data structure
 on which dimensional data is aggregated as per use case. The data provider (CSV file, in this case) and the data accessor layer is loosely coupled to keep provision for extension.
 
-##### Class Diagram
+##### Design
 ```mermaid
   classDiagram
     ITable <|-- CsvTable
@@ -19,6 +19,7 @@ on which dimensional data is aggregated as per use case. The data provider (CSV 
         +setColumns()
         +load()
         +getLoadedData()
+        +newInstance()$
     }
     class CsvTable{
         +setHeader()
