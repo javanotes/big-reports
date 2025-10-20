@@ -13,9 +13,9 @@ necessary concurrency constructs as needed.
     PersonDao --|> TableDao
     PersonDao ..> ITable
     PersonDao --> FieldTyp
+    FieldTyp --* ITable
     PersonService --> PersonDao
     note for FieldTyp "field metadata config"
-    note for ITable "tabular file data reader specs"
     note for CsvTable "specific ITable provider"
     note for AbstractTable "abstract provider to plugin validation framework"
 
