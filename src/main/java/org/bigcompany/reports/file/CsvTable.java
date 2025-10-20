@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * the key in the entries. Note, the structural integrity of the file with respect to the headers has to be maintained.
  * The data can be refreshed. Not thread safe!
  */
-final class CsvTable implements ITable {
+final class CsvTable extends AbstractTable {
 	
 	private static Logger log = Logger.getLogger("CsvLoader");
 
@@ -113,12 +113,12 @@ final class CsvTable implements ITable {
 				if(splits[j].length() > 0) {
 					row.put(headers[j], splits[j]);	
 				}
-							
 			}
-			getLoadedData().add(row);
+			addRow(row, fieldTyps);
 		}
 		return true;
 	}
+
 	private void validate(String [] splits, FieldTyp ...fieldTyps) {
 		// header count check
 		if(splits.length == 0 || splits.length != columns) {

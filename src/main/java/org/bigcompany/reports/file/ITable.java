@@ -40,4 +40,11 @@ public interface ITable {
 		return new CsvTable(filePath);
 	}
 
+	/**
+	 * Add a row while parsing the {@link ITable}. This can have additional validations
+	 * @param row
+	 * @param fieldTyps
+	 */
+	void addRow(Map<String, String> row, FieldTyp[] fieldTyps);
+
 }
