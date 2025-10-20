@@ -7,7 +7,8 @@ necessary concurrency constructs as needed.
 ##### Class Diagram
 ```mermaid
   classDiagram
-    ITable <|-- CsvTable
+    ITable <|-- AbstractTable
+    AbstractTable <|-- CsvTable
     TableDao --> ITable
     PersonDao --|> TableDao
     PersonDao ..> ITable
@@ -16,7 +17,8 @@ necessary concurrency constructs as needed.
     note for FieldTyp "field metadata config"
     note for ITable "tabular file data reader specs"
     note for CsvTable "specific ITable provider"
-    
+    note for AbstractTable "abstract provider to plugin validation framework"
+
     class ITable{
         +setColumns()
         +load()
@@ -26,6 +28,11 @@ necessary concurrency constructs as needed.
     class CsvTable{
         +setHeader()
         +setDelimiter()
+       
+    }
+class AbstractTable{
+        +addRow()
+        #validateRowData()
        
     }
 class TableDao{
